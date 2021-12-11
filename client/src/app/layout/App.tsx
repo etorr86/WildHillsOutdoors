@@ -2,7 +2,7 @@ import { ThemeProvider } from "@emotion/react";
 import { Container, CssBaseline } from "@mui/material";
 import { createTheme } from '@mui/material/styles';
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import AboutPage from "../../features/about/AboutPage";
 import Catalog from "../../features/catalog/Catalog";
 import ProductDetailsPage from "../../features/catalog/ProductDetails";
@@ -32,13 +32,13 @@ function App() {
       <CssBaseline></CssBaseline>
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
       <Container>
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/about' element={<AboutPage />} />
-          <Route path='/catalog' element={<Catalog />} />
-          <Route path='/catalog/:id' element={<ProductDetailsPage />} />
-          <Route path='/contact' element={<ContactPage />} />
-        </Routes>
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+          <Route path='/about' component={AboutPage} />
+          <Route exact path='/catalog' component={Catalog} />
+          <Route path='/catalog/:id' component={ProductDetailsPage} />
+          <Route path='/contact' component={ContactPage} />
+        </Switch>
       </Container>
     </ThemeProvider>
   );
