@@ -3,15 +3,20 @@ import { Container, CssBaseline } from "@mui/material";
 import { createTheme } from '@mui/material/styles';
 import { useState } from "react";
 import { Route, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import AboutPage from "../../features/about/AboutPage";
 import Catalog from "../../features/catalog/Catalog";
 import ProductDetailsPage from "../../features/catalog/ProductDetails";
 import ContactPage from "../../features/contact/ContactPage";
 import HomePage from "../../features/home/HomePage";
 import Header from "./Header";
+import { injectStyle } from "react-toastify/dist/inject-style";
 
 
 function App() {
+  // "TOAST" CALL IT ONCE IN YOUR APP
+  injectStyle();
+  
   const [darkMode, setDarkMode] = useState(false);
   const paletteType = darkMode ? 'dark' : 'light';
   const theme = createTheme({
@@ -29,6 +34,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <ToastContainer position="bottom-right" hideProgressBar theme='colored'/>
       <CssBaseline></CssBaseline>
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
       <Container>
