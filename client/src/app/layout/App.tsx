@@ -11,6 +11,8 @@ import ContactPage from "../../features/contact/ContactPage";
 import HomePage from "../../features/home/HomePage";
 import Header from "./Header";
 import { injectStyle } from "react-toastify/dist/inject-style";
+import ServerError from "../errors/ServerError";
+import NotFound from "../errors/NotFound";
 
 
 function App() {
@@ -44,6 +46,8 @@ function App() {
           <Route exact path='/catalog' component={Catalog} />
           <Route path='/catalog/:id' component={ProductDetailsPage} />
           <Route path='/contact' component={ContactPage} />
+          <Route path='/server-error' component={ServerError}/>
+          <Route component={NotFound}/>
         </Switch>
       </Container>
     </ThemeProvider>
