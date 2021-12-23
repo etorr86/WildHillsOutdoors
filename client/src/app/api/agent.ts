@@ -5,6 +5,7 @@ import { history } from "../..";
 const sleep = () => new Promise(resolve => setTimeout(resolve, 500));
 
 axios.defaults.baseURL = 'http://localhost:5000/api/';
+axios.defaults.withCredentials = true;
 
 axios.interceptors.response.use(async response => {
     await sleep();
@@ -61,9 +62,16 @@ const Catalog = {
     details: (id: number) => request.get(`products/${id}`)
 }
 
+const Basket = {
+    get: () => request.get('basket'),
+    addItem: (productId: number, quatity = 1) => request.post(`basket?productId=${productId}&quantity=${quatity}`, {}),
+    removeItem: (productId: number, quatity = 1) => request.delete(`basket?productId=${productId}&quantity=${quatity}`)
+}
+
 const agent = {
     Catalog,
-    TestErrors
+    TestErrors,
+    Basket
 }
 
 
