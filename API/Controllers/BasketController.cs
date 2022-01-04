@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
@@ -14,7 +11,6 @@ using Microsoft.Extensions.Logging;
 
 namespace API.Controllers
 {
-    [Route("[controller]")]
     public class BasketController : BaseApiController
     {
         private readonly ILogger<BasketController> _logger;
